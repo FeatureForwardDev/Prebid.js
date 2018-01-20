@@ -410,11 +410,9 @@ describe('AppNexusAdapter', () => {
 
       const bidderRequest = {
         bids: [{
-          mediaTypes: {
-            video: {
-              rendererOptions: {
-                adText: 'configured'
-              }
+          renderer: {
+            options: {
+              adText: 'configured'
             }
           }
         }]
@@ -422,7 +420,7 @@ describe('AppNexusAdapter', () => {
 
       const result = spec.interpretResponse({ body: outstreamResponse }, {bidderRequest});
       expect(result[0].renderer.config).to.deep.equal(
-        bidderRequest.bids[0].mediaTypes.video.rendererOptions
+        bidderRequest.bids[0].renderer.options
       );
     });
   });
